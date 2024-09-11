@@ -7,7 +7,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Scanner;
 
 public class Lox {
     static boolean hadError = false;
@@ -25,7 +24,7 @@ public class Lox {
     // Runs when the programs starts with a script argument
     private static void runFile(String path) throws IOException {
         byte[] bytes = Files.readAllBytes(Paths.get(path));
-        run(new String(bytes), Charset.defaultCharset());
+        run(new String(bytes, Charset.defaultCharset()));
 
         //indicate an error in the exit code
         if (hadError) System.exit(65);
